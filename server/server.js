@@ -12,13 +12,14 @@ var connection = mysql.createConnection({
   console.log("Conectado a la DB");
 
 server.get('/',function(req, res){
-
-    res.send("HOLA MUNDO"); 
+    connection.query("SELECT * FROM usuarios",[],function(err,rs){
+        res.send(rs);
+    });
 });
 
 server.get('/login', function (req, res){
     
-    res.send("HOLA DESDE LOGIN");
+    res.send("BIENVENIDO");
 });
 
 server.listen(3000);
